@@ -1,12 +1,14 @@
 import logging
 import math
 import os
+import socket
 
 import dask
 
 from .core import Job, JobQueueCluster, job_parameters, cluster_parameters
 
 logger = logging.getLogger(__name__)
+localhost = socket.gethostbyname(socket.gethostname())
 
 
 def pbs_format_bytes_ceil(n):
@@ -35,8 +37,8 @@ def pbs_format_bytes_ceil(n):
 
 
 class PBSJob(Job):
-    submit_command = "qsub"
-    cancel_command = "qdel"
+    submit_command = "ssh -o StrictHostKeyChecking=no {} 'qsub'".format(localhost)
+    cancel_command = "ssh -o StrictHostKeyChecking=no {} 'qdel'".format(localhost)
     config_name = "pbs"
 
     def __init__(
