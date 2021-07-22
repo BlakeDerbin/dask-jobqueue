@@ -37,7 +37,7 @@ def pbs_format_bytes_ceil(n):
 
 
 class PBSJob(Job):
-    submit_command = "ssh -o StrictHostKeyChecking=no {} 'module load python36 && qsub".format(localhost)
+    submit_command = "ssh -o StrictHostKeyChecking=no {} 'module load python36 && qsub'".format(localhost)
     cancel_command = "ssh -o StrictHostKeyChecking=no {} 'qdel'".format(localhost)
     config_name = "pbs"
 
