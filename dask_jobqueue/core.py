@@ -148,8 +148,7 @@ class Job(ProcessInterface, abc.ABC):
         header_skip=None,
         log_directory=None,
         shebang=None,
-        # setting custom python executable for HPC python36 module
-        python="/cm/local/apps/python3/bin/python",
+        python="singularity run --network host ~/singularity/jupyterhub.sif python3",
         job_name=None,
         config_name=None,
     ):
@@ -241,6 +240,8 @@ class Job(ProcessInterface, abc.ABC):
 
         # dask-worker command line build
         dask_worker_command = "%(python)s -m distributed.cli.dask_worker" % dict(
+            # executes a singularity instance on the jupyter notebook instance
+            # It's needed to run dask-workers on HPC due to differences in python environments
             python=python
         )
         command_args = [dask_worker_command, self.scheduler]

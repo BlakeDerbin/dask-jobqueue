@@ -43,7 +43,7 @@ jobqueue:
     queue: null
     project: null
     walltime: '00:30:00'
-    env-extra: []
+    env-extra: ['module load singularity']
     resource-spec: null
     job-extra: []
     log-directory: null
