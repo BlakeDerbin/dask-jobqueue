@@ -3,9 +3,7 @@ Deploy Dask on Job Queueing systems
 
 |Build Status| |Doc Status| |Gitter| |Version Status|
 
-Easy deployment of Dask Distributed on job queuing systems such as PBS, Slurm,
-or SGE.  See documentation_ for more information.
-
+This fork of Dask-jobqueue was modified to be used with a HPC system where the dask-workers are run in singularity container where the qsub commands are exectued through SSH due to HPC restrictions.
 
 LICENSE
 -------
