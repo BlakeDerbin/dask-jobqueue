@@ -149,7 +149,7 @@ class Job(ProcessInterface, abc.ABC):
         log_directory=None,
         shebang=None,
         # setting custom python executable for HPC python36 module
-        python="/cm/local/apps/python3/bin/python3",
+        python="/cm/local/apps/python3/bin/python",
         job_name=None,
         config_name=None,
     ):
